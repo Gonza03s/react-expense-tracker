@@ -1,7 +1,8 @@
 import { VictoryPie, VictoryLabel } from "victory";
 import { useGlobalState } from "../context/GlobalState";
 
-export function ExpenseChart() {
+export function ExpenseChart() 
+{
   const { transactions } = useGlobalState();
 
   const totalIncome = transactions
@@ -13,13 +14,16 @@ export function ExpenseChart() {
       .filter((transaction) => transaction.amount < 0)
       .reduce((acc, transaction) => (acc += transaction.amount), 0) * -1;
 
+
   const totalExpensesPercentage =
     totalIncome !== 0 ? Math.round((totalExpenses / totalIncome) * 100) : 0;
 
   const totalIncomePercentage = 100 - totalExpensesPercentage;
 
   /* console.log(totalExpensesPercentage);
-  console.log(totalIncomePercentage); */
+  console.log(totalIncomePercentage);
+  
+  */
 
   return (
     <VictoryPie
